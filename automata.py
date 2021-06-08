@@ -1,3 +1,26 @@
+class Stack:
+
+    def __init__ (self):
+        self.stack = []
+
+    def add(element):
+        self.stack.append(element)
+
+    def remove(self):
+        self.stack.pop()
+
+    def show(self):
+        print(self.stack)
+        return self.stack
+
+    def read_index(self, index):
+        print(self.stack[index])
+        return self.stack[index]
+
+    def read_top(self):
+        print(self.stack[-1])
+        return self.stack[-1]
+
 class PushDownAutomata:
 
     def __init__ (self, states, alphabet, transition_function):
