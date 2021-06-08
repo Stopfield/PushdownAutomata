@@ -9,17 +9,8 @@ class Stack:
     def remove(self):
         self.stack.pop()
 
-    def show(self):
-        print(self.stack)
-        return self.stack
-
-    def read_index(self, index):
-        print(self.stack[index])
-        return self.stack[index]
-
-    def read_top(self):
-        print(self.stack[-1])
-        return self.stack[-1]
+    def is_empty(self):
+        return len(self.stack) == 0
 
 class PushDownAutomata:
 
