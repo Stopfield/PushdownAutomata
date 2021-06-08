@@ -23,7 +23,7 @@ class Stack:
 
 class PushDownAutomata:
 
-    def __init__ (self, states, alphabet, transition_function):
+    def __init__ (self, states, alphabet, transition_function, stack_alphabet):
         # Defines the symbols the automata can recognize
         self.sigma = alphabet
 
@@ -35,3 +35,7 @@ class PushDownAutomata:
 
         # Defines the transition funcion that defines the automata
         self.delta = transition_function
+
+        # Defines the stack atributes
+        self.stack = Stack()
+        self.V = stack_alphabet
