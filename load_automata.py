@@ -3,7 +3,8 @@ import re
 
 # Função de leitura do arquivo do autômato.
 def load_file():
-    file = open('file.txt', 'r').read()
+    # Abre o arquivo para a leitura dos componentes do autômato.
+    file = open('file.txt', 'r').readline()
 
     # Regex para remoção de símbolos inúteis.
     regex = re.compile(r'[^a-zA-Z0-9]+')
@@ -27,12 +28,22 @@ def load_file():
     # Tratamento de erros do arquivo.
     if file.count(',') != file.count(' '):
         raise Exception("Erro na separacao dos componentes!")
-    elif len(arr) > 6 or len(arr) < 6:
+    elif len(arr) != 6:
         raise Exception("Erro nos componentes do automato!")
     elif 'D' not in arr:
         raise Exception("Erro na letra do conjunto de regras de producao!")
     else:
-        print(arr)
+        print(tuple(arr))
+
+    # Abre o arquivo para a leitura das funções de transição.
+    file = open('file.txt', 'r').read().splitlines()
+
+    # Loop que separa as funções em tuplas.
+    arr = []
+    for i in file[1:]:
+        arr.append(tuple([c.strip() for c in i.split(',')]))
+
+    print(tuple(arr))
 
 
 print(load_file())
