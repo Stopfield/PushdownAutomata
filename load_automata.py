@@ -14,18 +14,18 @@ def components():
 
     # Loop que separa os conjuntos em tuplas.
     component = []
-    for i in str(file[:1]).split(','):
-        if '{' in i and not '}' in i:
+    for word in str(file[:1]).split(','):
+        if '{' in word and not '}' in word:
             aux = []
-            aux.append(regex.sub('', i))
-        elif '}' in i and not '{' in i:
-            aux.append(regex.sub('', i))
+            aux.append(regex.sub('', word))
+        elif '}' in word and not '{' in word:
+            aux.append(regex.sub('', word))
             component.append(tuple(aux))
             aux = []
         elif len(aux) != 0:
-            aux.append(regex.sub('', i))
+            aux.append(regex.sub('', word))
         else:
-            component.append(regex.sub('', i))
+            component.append(regex.sub('', word))
 
     # Tratamento de padrão dos componentes.
     for i in component[1]:
@@ -55,3 +55,5 @@ def functions():
             if not re.match(r'[a-zA-Z0-9?-]', word):
                 raise Exception("Erro: Funcao de Transicao.")
     return tuple(function)
+
+print(functions())
