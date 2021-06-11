@@ -55,5 +55,3 @@ def functions():
             if not re.match(r'[a-zA-Z0-9?-]', word):
                 raise Exception("Erro: Funcao de Transicao.")
     return tuple(function)
-
-print(functions())
