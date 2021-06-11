@@ -2,9 +2,9 @@
 import re
 
 # Abre o arquivo para a leitura dos componentes e funções de transição do autômato.
-file = open('file.txt', 'r').read().splitlines()
+# file = open('file.txt', 'r').read().splitlines()
 
-def components():
+def components(file):
     # Regex para remoção de símbolos inúteis.
     regex = re.compile(r'[^a-zA-Z0-9]+')
 
@@ -41,9 +41,8 @@ def components():
         raise Exception('Erro na letra do conjunto de regras de producao!')
     else:
         return tuple(component)
-
-
-def functions():
+      
+def functions(file):
     # Loop que separa as funções de transição em tuplas.
     function = []
     for line in file[1:]:
