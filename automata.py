@@ -19,6 +19,9 @@ class PushDownAutomata:
     def __init__ (self, alphabet, states, stack_alphabet): # transition_function
         # Defines the symbols the automata can recognize
         self.sigma = alphabet # {a, b}
+        self.sigma = list(self.sigma)
+        self.sigma.append(None)
+        self.sigma = tuple(self.sigma)
 
         # Defines the states, and their atributes
         self.states = states # {q0, ..., qf}
@@ -49,20 +52,22 @@ class PushDownAutomata:
         simulation the behavior of a automata ((state, word) = (state'))
         """
 
-        # transition_dict = {state : {element : {stack_el : 'Reject' for stack_el in self.V} for element in self.sigma} for state in self.states}
+        transition_dict = {state : {element : {stack_el : 'Reject' for stack_el in self.V} for element in self.sigma} for state in self.states}
 
-        transition_dict = {state : {element : 'Reject' for element in self.sigma} for state in self.states}
-
-        for (state, dict_value) in transition_dict.items():
+        for state, dict_value in transition_dict.items():
             print(f'Enter transitions for state {state}. If required, use "Reject"')
 
-            for input_alphabet, transition_state in dict_value.items():
-                transition_dict[state][input_alphabet] = input()
+            for input_alphabet, stack_values in dict_value.items():
 
-        print('\n Transiction Function Q x Sigma -> Q')
-        print('Current State\tInput Alphabet\tNext State')
-        for key, dict_value, teste in transition_dict.items():
-            print(f'{key}\t\t{input_alphabet}\t\t{transition_state}')
+                for stack_simbol, transition_state in stack_values.items():
+                    transition_dict[state][input_alphabet][stack_simbol] = input()
+
+        print(transition_dict)
+
+        # print('\n Transiction Function Q x Sigma -> Q')
+        # print('Current State\tInput Alphabet\tNext State')
+        # for key, dict_value in transition_dict.items():
+        #     print(f'{key}\t\t{input_alphabet}\t\t{transition_state}')
 
 digital_file = open('file.txt', 'r').read().splitlines()
 elements = components(digital_file)
