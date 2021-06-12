@@ -74,7 +74,9 @@ class PushDownAutomata:
 
                     print("{}\t{}\t{}\t{}".format(state, input_alphabet, stack_simbol, transition_state))
 
-        # def process_word
+        return transition_dict
+
+    # def process_word(self, word):
         
 
 digital_file = open('file.txt', 'r').read().splitlines()
@@ -97,6 +99,7 @@ transition_function = tuple(transition_function)
 
 
 automato = PushDownAutomata(elements[0], elements[1], elements[5])
+# print(automato.delta)
 # print(automato.sigma)
 # print(automato.start)
 # print(automato.final)
